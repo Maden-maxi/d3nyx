@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nodejs:
+    image: node:10.16
+    working_dir: /code
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/code
+    ports:
+    - "4200:4200"
+    command: ["bash"]
