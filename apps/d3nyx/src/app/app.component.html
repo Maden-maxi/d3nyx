@@ -5,4 +5,14 @@
     src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
   />
 </div>
-<div>Message: {{ hello$ | async | json }}</div>
+<div>
+  <d3nyx-table [items]="books" [headers]="headers">
+    <ng-template d3nyxTableRow let-item="item">
+      <td>{{item.name}}</td>
+      <td>{{item.authors.join(',')}}</td>
+      <td>{{item.year}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.description}}</td>
+    </ng-template>
+  </d3nyx-table>
+</div>

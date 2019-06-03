@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@d3nyx/api-interface": ["libs/api-interface/src/index.ts"]
+      "@d3nyx/api-interface": ["libs/api-interface/src/index.ts"],
+      "@d3nyx/data-table": ["libs/data-table/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
