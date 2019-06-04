@@ -1,0 +1,25 @@
+<div class="pagination">
+  <ng-container *ngIf="!isFirst">
+    <div class="pagination__button pagination__button_prev" (click)="firstPage()">First</div>
+    <div class="pagination__button pagination__button_prev" (click)="prev()">Prev</div>
+  </ng-container>
+
+  <div class="pagination__navigation">
+    <div class="pagination__button"
+         *ngFor="let page of pages | pagination: pageIndex: navSize + pageIndex; index as i"
+         [class.active]="page === pageIndex"
+         (click)="navigateTo(page)">{{page + 1}}</div>
+  </div>
+
+  <ng-container *ngIf="!isLast">
+    <div class="pagination__button pagination_next" (click)="next()">Next</div>
+    <div class="pagination__button pagination_next" (click)="lastPage()">Last</div>
+  </ng-container>
+</div>
+
+<div>
+  <label for="per-page">Per page</label>
+  <select id="per-page" (change)="changePageSize() " [(ngModel)]="_pageSize">
+    <option *ngFor="let pageSize of pageSizeOptions" [value]="pageSize">{{pageSize}}</option>
+  </select>
+</div>

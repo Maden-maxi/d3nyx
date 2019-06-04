@@ -1,3 +1,23 @@
 td {
   padding: 20px 5px;
 }
+
+d3nyx-table {
+  max-height: 500px;
+}
+
+.price span {
+  display: inline-block;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.low {
+  background: red;
+}
+.middle {
+  background: #2196F3;
+}
+.premium {
+  background: gold;
+}

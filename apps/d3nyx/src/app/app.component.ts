@@ -18,7 +18,7 @@ function makeid(length) {
 
 function generateBooks(): Book[] {
   let books = [];
-  for(let i = 0; i < 1000; i++) {
+  for(let i = 0; i < 1005; i++) {
     books = books.concat({
       id: makeid(10),
       name: `Book #${getRandomArbitrary(10, 200)}`,
@@ -45,4 +45,30 @@ export class AppComponent {
     {name: 'price', title: 'Price'},
     {title: 'Description'},
   ];
+  get prices() {
+    return this.books.map(book => book.price);
+  }
+  get avaragePrice() {
+    const avgPrice = this.prices.reduce((prev, next) => prev + next);
+    return Math.round(avgPrice / this.prices.length);
+  }
+  get minPrice() {
+    return Math.min(...this.prices);
+  }
+  get maxPrice() {
+    return Math.max(...this.prices);
+  }
+  getPriceType(price) {
+    const avgMin = this.avaragePrice - (this.avaragePrice / 2);
+    const avgMax = this.avaragePrice + (this.avaragePrice / 2);
+    if (price < avgMin) {
+      return 'low';
+    }
+    if (price > avgMax) {
+      return 'premium';
+    }
+    if (price >= avgMin && price <= avgMax) {
+      return 'middle';
+    }
+  }
 }

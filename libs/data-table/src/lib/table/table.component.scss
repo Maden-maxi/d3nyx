@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+  text-align: center;
+}
+th,td {
+  padding: 20px 5px;
+}
+
+tr:nth-child(odd) {
+  background: #cccccc;
+}
+.down {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.scroll-area {
+  max-height: 722px;
+  overflow-y: auto;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.sortable {
+  color: darkblue;
+}

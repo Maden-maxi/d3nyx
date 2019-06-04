@@ -1,0 +1,17 @@
+.pagination, .pagination__navigation {
+  display: flex;
+}
+
+.pagination__button {
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+.active {
+  background-color: #000;
+  color: #ffffff;
+}
+
+select {
+  margin-top: 20px;
+}

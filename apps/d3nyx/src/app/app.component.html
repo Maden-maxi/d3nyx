@@ -1,9 +1,5 @@
 <div style="text-align:center">
   <h1>Welcome to d3nyx!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-  />
 </div>
 <div>
   <d3nyx-table [items]="books" [headers]="headers">
@@ -11,7 +7,7 @@
       <td>{{item.name}}</td>
       <td>{{item.authors.join(',')}}</td>
       <td>{{item.year}}</td>
-      <td>{{item.price}}</td>
+      <td class="price">{{item.price}} <span [class]="getPriceType(item.price)">{{getPriceType(item.price) | titlecase}}</span></td>
       <td>{{item.description}}</td>
     </ng-template>
   </d3nyx-table>

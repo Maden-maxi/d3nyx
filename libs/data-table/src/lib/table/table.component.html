@@ -1,0 +1,45 @@
+<ng-template #rowBody let-item="item">
+  <td>{{item.id}}</td>
+</ng-template>
+<h4>Click on blue header to sort </h4>
+<h1 [class.invisible]="!checkedItems">Checked: {{checkedItems}}</h1>
+<div class="scroll-area">
+  <table>
+    <thead>
+    <tr>
+      <th *ngIf="checkable">
+        <label class="custom-checkbox">
+          <input class="custom-checkbox__input" type="checkbox" [checked]="isAllChecked" (change)="checkAll($event)">
+          <span class="custom-checkbox__checkmark"></span>
+        </label>
+      </th>
+      <th *ngFor="let head of headers" [class.no-sort]="!head.name">
+        <a *ngIf="head.name" style="cursor: pointer" (click)="setSortOrder(head.name)" class="text-nowrap sortable">
+          <span class="d-inline-block" [innerHTML]="head.title"></span>
+          <ng-container *ngIf="head.name === sortName">
+            <span *ngIf="sortReverse === false" class="down" aria-hidden="true">^</span>
+            <span *ngIf="sortReverse === true" class="up" aria-hidden="true">^</span>
+          </ng-container>
+        </a>
+        <div class="d-inline-block" *ngIf="!head.name" [innerHTML]="head.title"></div>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items | sortBy: sortName: sortReverse | pagination: currentPage * itemsPerPage: (currentPage * itemsPerPage) + itemsPerPage">
+      <td *ngIf="checkable">
+        <label class="custom-checkbox">
+          <input class="custom-checkbox__input" type="checkbox" [value]="item.id" [(ngModel)]="item.checked">
+          <span class="custom-checkbox__checkmark"></span>
+        </label>
+      </td>
+      <ng-template [ngTemplateOutlet]="rowTemplate || rowBody" [ngTemplateOutletContext]="{item: item}"></ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<d3nyx-pagination [length]="items.length"
+                  [pageSize]="itemsPerPage"
+                  (page)="getPage($event)"
+                  (pageSizeChange)="onPerPage($event)"></d3nyx-pagination>
